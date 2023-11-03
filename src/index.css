@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #cbd1ec;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px ;
+  line-height: 1;
+  color:  #333333;
+}
+h1,h2,h3,h4,h5,h6,div,p,span {
+  cursor: default;
+  text-align: center;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+img{
+  width: 100%;
+}

@@ -1,0 +1,15 @@
+
+
+.status{
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: rgb(255, 0, 0);
+}
+.time{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.running{
+  background-color: green;
+}
