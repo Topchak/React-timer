@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useRef} from 'react';
 
 import styles from './Timer.module.css'
 import Counter from './Counter/Counter'
@@ -6,26 +6,36 @@ import Button from '../../UI/Button/Button'
 
 function Timer() {
   const storedTime = localStorage.getItem('timer');
-  const initialTimer = storedTime ? parseInt(storedTime, 10) : 0;
-
-    const saveTimeToLocalStorage = (currentTime) => {
+  const initialTimer = storedTime
+    ? parseInt(storedTime, 10)
+    : 0;
+  const saveTimeToLocalStorage = (currentTime) => {
     localStorage.setItem('timer', currentTime.toString());
   };
 
   const [time, setTime] = useState(initialTimer);
-  const [status, setStatus] = useState('');  // 
+  const [status, setStatus] = useState(''); //
   const [isActive, setIsActive] = useState(false);
+  const [wrapperClasses,setWrapperClasses] = useState(styles.wrapper); 
 
+  const wrapperRef = useRef();
 
+  const handleClick = () => {
+    if (wrapperClasses === styles.wrapper) {
+      setWrapperClasses(styles.wrapper__block)
+    } else {
+      setWrapperClasses(styles.wrapper)
+    }
+  };
 
   useEffect(() => {
     let interval;
     interval = setInterval(() => {
-      if(isActive){
+      if (isActive) {
         setTime((prevTime) => prevTime + 1)
       }
-    },1000)
-    
+    }, 1000)
+
     return () => {
       clearInterval(interval)
     }
@@ -41,7 +51,9 @@ function Timer() {
   }
   const pause = () => {
     setIsActive(false);
-    !isActive ? setStatus('') : setStatus('Paused');
+    !isActive
+      ? setStatus('')
+      : setStatus('Paused');
   }
 
   const reset = () => {
@@ -57,19 +69,21 @@ function Timer() {
     } else if (!isActive && status === 'Paused') {
       return styles.paused;
     }
-    return ''; 
+    return '';
   }
 
   return (
-    <div className={`${styles.wrapper} ${addClass()}`}>
-      <h1>Timer</h1>
-      <Counter status={status} time={time}/>
+    <div ref={wrapperRef} className={`${wrapperClasses} ${addClass()}`}>
+      <div>
+        <h1>Timer</h1>
+        <Counter status={status} time={time}/>
+      </div>
       <div className={styles.buttons}>
         <Button onClick={start} text="Start"/>
         <Button onClick={pause} text="Pause"/>
         <Button onClick={reset} text="Reset"/>
       </div>
-
+      <Button onClick={handleClick} text="Change type of timer"/>
     </div>
   )
 }

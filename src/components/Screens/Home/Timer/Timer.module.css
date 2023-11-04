@@ -8,7 +8,6 @@
   margin: 200px auto;
   border: 1px solid black;
   border-radius: 8px;
-  transition: all .3 ease-in-out;
 }
 
 
@@ -39,14 +38,45 @@
   }
 }
 
-.paused { 
+.paused {
   background-color: rgba(200, 255, 0, 0.341);
   border: 1px solid rgba(200, 255, 0, 0.341);
 }
 
 .buttons {
-  margin-top: 20px;
+  margin: 20px 0px;
   display: flex;
   gap: 10px;
 }
 
+
+.wrapper__block {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  max-width: fit-content;
+  padding: 30px;
+  border-radius: 8px;
+  height: 200px;
+  margin: 300px auto;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.wrapper__block.active {
+  background-color: rgba(0, 128, 0, 0.658);
+}
+
+@media (max-width:767px){
+  .wrapper__block {
+    display: flex;
+    gap: 50px;
+    row-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+    height: fit-content;
+  }
+}
