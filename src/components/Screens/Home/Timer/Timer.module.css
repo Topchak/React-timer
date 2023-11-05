@@ -5,7 +5,6 @@
   flex-direction: column;
   justify-content: center;
   width: fit-content;
-  margin: 200px auto;
   border: 1px solid black;
   border-radius: 8px;
 }
@@ -59,7 +58,6 @@
   padding: 30px;
   border-radius: 8px;
   height: 200px;
-  margin: 300px auto;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
 }
